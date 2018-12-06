@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Serilog;
 
 namespace AzureWebAppMvc
 {
@@ -12,6 +13,10 @@ namespace AzureWebAppMvc
     {
         protected void Application_Start()
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Trace()
+                .WriteTo.ColoredConsole()
+                .CreateLogger();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
