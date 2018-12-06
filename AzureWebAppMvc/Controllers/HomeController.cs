@@ -19,6 +19,8 @@ namespace AzureWebAppMvc.Controllers
         {
             ViewBag.Message = "Your application description page.";
             Log.Information("Getting about page");
+
+            throw new InvalidOperationException("");
             return View();
         }
 
